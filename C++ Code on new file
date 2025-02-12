@@ -1,0 +1,94 @@
+#include "Triangle.h"
+#include <iostream>
+#include <math.h>
+
+double RTriangle::findTriangle() {
+	baseLength = itsThrdPoint - itsScndPoint;
+	heightLength = itsFrstPoint - itsScndPoint;
+	return (baseLength * heightLength) / 2;
+}
+
+
+int main() {
+	RTriangle myTriangle(1, 6, 2);
+	cout << "The area of your triangle is: " << myTriangle.findTriangle() << endl;
+
+	return 0;
+}
+
+#include <iostream>
+using namespace std;
+class point {
+public:
+	void setPointX(double horizontal) {
+		x = horizontal;
+	}
+	void setPointY(double vertical) {
+		y = vertical;
+	}
+
+	int const getPointY() {
+		return y;
+	}
+
+	int const getPointX() {
+		return x;
+	}
+private:
+	double x;
+	double y;
+};
+
+class RTriangle
+{
+public:
+	RTriangle(double FrstPoint, double ScndPoint, double ThrdPoint) {
+		itsFrstPoint = FrstPoint;
+		itsScndPoint = ScndPoint;
+		itsThrdPoint = ThrdPoint;
+
+		upperVertical.setPointY(FrstPoint);
+		lowerVertical.setPointX(ScndPoint);
+		horizontalEnd.setPointX(ThrdPoint);
+
+
+	}
+	~RTriangle() {
+	}
+
+	//below is setting the value for the return sequence
+	void SetUpperVertical(point location) {
+		upperVertical = location;
+	}
+	void SetLowerVertical(point location) {
+		lowerVertical = location;
+	}
+	void SetHorizontalEnd(point location) {
+		horizontalEnd = location;
+	}
+
+	//below is retrieving the value for the return sequence:
+	point const GetUpperVertical() {
+		return upperVertical;
+	}
+
+	point const GetLowerVertical() {
+		return lowerVertical;
+	}
+
+	point const GetHorizontalEnd() {
+		return horizontalEnd;
+	}
+	double findTriangle(); 
+
+
+private:
+	point upperVertical;
+	point lowerVertical;
+	point horizontalEnd;
+	double baseLength;
+	double heightLength;
+	double itsFrstPoint;
+	double itsScndPoint;
+	double itsThrdPoint;
+};
